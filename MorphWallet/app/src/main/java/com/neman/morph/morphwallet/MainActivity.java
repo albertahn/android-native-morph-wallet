@@ -31,7 +31,9 @@ public class MainActivity extends AppCompatActivity
     private StringRecyclerAdapter recyclerAdapter;
     private RecyclerView recycler;
     private LinearLayoutManager lManager;
-    public ArrayList<String> pubListdataArray;
+    public ArrayList<String> publicArray;
+    public ArrayList<String> friendsArray;
+    public ArrayList<String> privateArray;
 
 
 
@@ -44,13 +46,18 @@ public class MainActivity extends AppCompatActivity
 
 
         this.setSupportActionBar(toolbar);
-
+//send gad button
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                Snackbar.make(view, "Send Gas to your friends!", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
+
+
+                startActivity(new Intent(getApplicationContext(), TransactionActivity.class));
+
+
             }
         });
 
@@ -104,7 +111,13 @@ public class MainActivity extends AppCompatActivity
 
 
         recyclerAdapter = null;
-        recyclerAdapter = new StringRecyclerAdapter(this, getFeedFrom("public"));
+
+        publicArray= getFeedFrom("Public");
+
+        friendsArray = getFeedFrom("Friends");
+        privateArray = getFeedFrom("Private");
+
+        recyclerAdapter = new StringRecyclerAdapter(this, getFeedFrom("Public"));
         recycler.setAdapter(recyclerAdapter);
 
 
@@ -112,18 +125,43 @@ public class MainActivity extends AppCompatActivity
 
     private void updateData(String type) {
 
-
+        Toast.makeText(getApplicationContext(), "type: "+ type, Toast.LENGTH_SHORT).show();
 
         //recycler = (RecyclerView) findViewById(R.id.list_items);
         // lManager = new LinearLayoutManager(this);
         // recycler.setLayoutManager(lManager);
-        pubListdataArray = getFeedFrom(type);
+       // pubListdataArray = getFeedFrom(type);
 
-        Toast.makeText(getApplicationContext(), "type: "+ pubListdataArray.toString(), Toast.LENGTH_SHORT).show();
+       // Toast.makeText(getApplicationContext(), "type: "+ pubListdataArray.toString(), Toast.LENGTH_SHORT).show();
 
-        recyclerAdapter = new StringRecyclerAdapter(this, pubListdataArray);
+        ArrayList<String> resData = new ArrayList<String>();
+
+
+        switch (type){
+
+            case "Public":
+
+                resData =  publicArray;
+
+                break;
+
+            case "Friends":
+
+                resData =  friendsArray;
+                break;
+
+            case "Private":
+                resData =  privateArray;
+
+                break;
+        }
+
+        recyclerAdapter = new StringRecyclerAdapter(this, resData);
         recycler.setAdapter(recyclerAdapter);
         //recyclerAdapter.updateData(getFeedFrom(type));
+
+
+
     }
 
 
@@ -134,16 +172,16 @@ public class MainActivity extends AppCompatActivity
         // TODO: further implement this method to pull actual user data
 
 
-        if (type == "public") {
-            list.add("Public: bill"); list.add("Public: harry");  list.add("Public: Jimmy");
+        if (type == "Public") {
+            list.add("Bill send Bob 0.3 Gas"); list.add("Harry sent Tom 0.01 Gas");  list.add("Jimmy sent Tommy 0.001 Gas");
             return list;
         }
-        else if (type == "friends") {
-            list.add("Friends: joe"); list.add("Friends: Kim");
+        else if (type == "Friends") {
+            list.add("Joe sent Vio 0.02 Gas"); list.add("Kim sent John 0.004 Gas");
             return list;
         }
-        else if (type == "private") {
-            list.add("Private: mom"); list.add("Private: pops");
+        else if (type == "Private") {
+            list.add("Mom sent you 0.02 Gas"); list.add("Dad sent you 0.7 Gas");
             return list;
         }
 

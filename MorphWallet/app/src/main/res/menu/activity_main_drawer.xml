@@ -11,7 +11,12 @@
         <item
             android:id="@+id/nav_transaction"
             android:icon="@drawable/ic_menu_send"
-            android:title="Send / Receive" />
+            android:title="Send" />
+
+        <item
+            android:id="@+id/nav_recieve"
+            android:icon="@drawable/ic_menu_send"
+            android:title="Receive" />
 
         <item
             android:id="@+id/nav_invite"

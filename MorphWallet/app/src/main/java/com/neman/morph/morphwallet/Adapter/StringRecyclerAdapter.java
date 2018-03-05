@@ -54,7 +54,16 @@ public class StringRecyclerAdapter extends RecyclerView.Adapter<StringRecyclerAd
 //    }
 
     @Override
-    public int getItemCount() { return list.size(); }
+    public int getItemCount() {
+
+        if(list !=null){
+            return list.size();
+        }else{
+
+            return 0;
+        }
+
+    }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
