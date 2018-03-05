@@ -108,6 +108,12 @@ public class TransactionActivity extends AppCompatActivity
                 startActivity(new Intent(getApplicationContext(), TransactionActivity.class));
             }
 
+        }else if(id == R.id.nav_recieve){
+            if (!item.isChecked()) {
+                item.setChecked(true);
+                startActivity(new Intent(getApplicationContext(),  RecieveGasActivity.class));
+            }
+
         }  else if (id == R.id.nav_invite) {
             if (!item.isChecked()) {
                 item.setChecked(true);

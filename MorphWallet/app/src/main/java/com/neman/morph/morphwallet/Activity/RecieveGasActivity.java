@@ -106,6 +106,12 @@ public class RecieveGasActivity extends AppCompatActivity
                 startActivity(new Intent(getApplicationContext(), MainActivity.class));
             }
 
+        }else if(id == R.id.nav_recieve){
+            if (!item.isChecked()) {
+                item.setChecked(true);
+                startActivity(new Intent(getApplicationContext(),  RecieveGasActivity.class));
+            }
+
         } else if (id == R.id.nav_transaction) {
             if (!item.isChecked()) {
                 item.setChecked(true);

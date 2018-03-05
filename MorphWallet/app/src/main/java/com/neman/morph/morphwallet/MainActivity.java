@@ -19,6 +19,7 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.neman.morph.morphwallet.Activity.InviteActivity;
+import com.neman.morph.morphwallet.Activity.RecieveGasActivity;
 import com.neman.morph.morphwallet.Activity.TransactionActivity;
 import com.neman.morph.morphwallet.Adapter.StringRecyclerAdapter;
 
@@ -237,6 +238,12 @@ public class MainActivity extends AppCompatActivity
             if (!item.isChecked()) {
                 item.setChecked(true);
                 startActivity(new Intent(getApplicationContext(), TransactionActivity.class));
+            }
+
+        }else if(id == R.id.nav_recieve){
+            if (!item.isChecked()) {
+                item.setChecked(true);
+                startActivity(new Intent(getApplicationContext(),  RecieveGasActivity.class));
             }
 
         } else if (id == R.id.nav_invite) {
