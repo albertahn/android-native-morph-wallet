@@ -6,6 +6,7 @@ package com.neman.morph.morphwallet.Activity;
  */
 
 import android.app.ProgressDialog;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -18,8 +19,15 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.neman.morph.morphwallet.MainActivity;
+import com.neman.morph.morphwallet.Model.User;
 import com.neman.morph.morphwallet.R;
+import com.neman.morph.morphwallet.Utils.HTTPDataHandler;
+
+import java.lang.reflect.Type;
+import java.util.List;
 
 //import butterknife.ButterKnife;
 //import butterknife.InjectView;
@@ -33,10 +41,14 @@ public class LoginActivity extends AppCompatActivity {
     public Button _loginButton;
     public TextView _signupLink;
 
+    // API key: 6D0eWBFJOgEvStu_kwLQQ0a70k2-OBFL
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+
 
         _emailText = (EditText) findViewById(R.id.input_email);
         _passwordText = (EditText) findViewById(R.id.input_password);
@@ -159,5 +171,42 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         return valid;
+    }
+
+    class GetData extends AsyncTask<String, Void, String> {
+        ProgressDialog pd = new ProgressDialog(LoginActivity.this);
+
+        @Override
+        protected String doInBackground(String... strings) {
+            String stream = null;
+            String urlString = strings[0];
+            HTTPDataHandler http = new HTTPDataHandler();
+            stream = http.GetHTTPData(urlString);
+
+            return stream;
+
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+
+            pd.setTitle("Please wait... ");
+
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            // Done process
+            Gson gson = new Gson();
+
+            // TODO left off at 33:33 from tutorial.. but getting protected error
+           // Type listType = new TypeToken<List<User>>()().getType();
+           // users=gson.fromJson(s,listType); //
+            pd.dismiss();
+        }
+
+
     }
 }
