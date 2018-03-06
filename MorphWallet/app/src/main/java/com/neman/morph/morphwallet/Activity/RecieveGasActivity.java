@@ -48,7 +48,7 @@ public class RecieveGasActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         Menu menu = navigationView.getMenu();
-        menu.findItem(R.id.nav_transaction).setChecked(true);
+        menu.findItem(R.id.nav_recieve).setChecked(true);
         navigationView.setNavigationItemSelectedListener(this);
         //initializeDisplayContent();
         navigationView.setNavigationItemSelectedListener(this);
@@ -59,7 +59,7 @@ public class RecieveGasActivity extends AppCompatActivity
         super.onResume();
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         Menu menu = navigationView.getMenu();
-        menu.findItem(R.id.nav_transaction).setChecked(true);
+        menu.findItem(R.id.nav_recieve).setChecked(true);
     }
 
     @Override
