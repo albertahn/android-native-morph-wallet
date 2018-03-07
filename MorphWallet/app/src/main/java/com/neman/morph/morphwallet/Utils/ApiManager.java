@@ -75,6 +75,7 @@ public class ApiManager {
             public void onErrorResponse(VolleyError error) {
                 VolleyLog.e("Error: ", error.getMessage());
             }
+
         }) {
 
             @Override
@@ -90,7 +91,10 @@ public class ApiManager {
         queue.add(req);
 
 
-    }
+    }//end send gas
+
+
+
 
 
 

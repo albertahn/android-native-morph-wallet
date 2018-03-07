@@ -60,7 +60,11 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                login();
+                //login();
+
+                //just login user
+
+                startActivity(new Intent(getApplicationContext(), MainActivity.class));
             }
         });
 
@@ -72,11 +76,15 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 Snackbar.make(v, "creating new acct", Snackbar.LENGTH_LONG).show();
+
+
                 /* TODO
                 // Start the Signup activity
                 Intent intent = new Intent(getApplicationContext(), SignupActivity.class);
                 startActivityForResult(intent, REQUEST_SIGNUP);
                 */
+
+
             }
         });
     }
@@ -199,6 +207,9 @@ public class LoginActivity extends AppCompatActivity {
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
             // Done process
+
+            Log.e("s:gson: ", s);
+
             Gson gson = new Gson();
 
             // TODO left off at 33:33 from tutorial.. but getting protected error
