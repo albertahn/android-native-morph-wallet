@@ -5,10 +5,13 @@ package com.neman.morph.morphwallet.Activity;
  * and roccooooo
  */
 
+import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.pm.PackageManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
@@ -47,6 +50,17 @@ public class LoginActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+
+
+        String[] PERMISSIONS_REQUEST = {android.Manifest.permission.READ_EXTERNAL_STORAGE, android.Manifest.permission.CAMERA, android.Manifest.permission.WRITE_EXTERNAL_STORAGE};
+
+        // Request permission to open the camera and read the ROC.lic file
+        Activity activity = (Activity) this;
+        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED || ActivityCompat.checkSelfPermission(activity, android.Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(activity, PERMISSIONS_REQUEST, 200);
+
+        }
 
 
 

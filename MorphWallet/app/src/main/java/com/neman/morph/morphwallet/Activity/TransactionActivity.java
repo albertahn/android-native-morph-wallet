@@ -13,17 +13,26 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.gms.common.api.CommonStatusCodes;
 import com.neman.morph.morphwallet.MainActivity;
 import com.neman.morph.morphwallet.R;
+import com.neman.morph.morphwallet.Utils.barcode.BarcodeCaptureActivity;
 
 public class TransactionActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    private TextView addressToSend;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_transaction);
+
+        addressToSend = (TextView) findViewById(R.id.address);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -31,8 +40,18 @@ public class TransactionActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                Intent intent = new Intent(getApplicationContext(), BarcodeCaptureActivity.class);
+                startActivityForResult(intent, 1);
+
+
+
+                /*
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
+
+
+                        */
             }
         });
 
@@ -48,6 +67,26 @@ public class TransactionActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
         //initializeDisplayContent();
         navigationView.setNavigationItemSelectedListener(this);
+    }//oncreate
+
+    @Override
+   public void onActivityResult(int requestCode,int resultCode, Intent data) {
+        if (requestCode == 1) {
+            if (resultCode == CommonStatusCodes.SUCCESS) {
+                addressToSend.setText("AZgXhB49EKyS31nHQmhdqRfGSFQAN5ZXBV");
+
+
+
+
+
+                Toast.makeText(getApplicationContext(), "got address", Toast.LENGTH_SHORT).show();
+            } else{
+
+            }
+
+        } else{
+            super.onActivityResult(requestCode, resultCode, data);
+        }
     }
 
     @Override

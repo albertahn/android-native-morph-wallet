@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.neman.morph.morphwallet">
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
     <application
         android:allowBackup="true"
@@ -34,6 +36,8 @@
             android:label="@string/title_activity_invite"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Activity.SignupActivity"></activity>
+
+        <activity android:name=".Utils.barcode.BarcodeCaptureActivity"></activity>
     </application>
 
 </manifest>
