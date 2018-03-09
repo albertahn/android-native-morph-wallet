@@ -36,4 +36,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+    
+    
+    <EditText
+        android:id="@+id/amount"
+        android:layout_below="@+id/address"
+        android:hint="How much gas would you like to send"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    
+    
+    
 </RelativeLayout>

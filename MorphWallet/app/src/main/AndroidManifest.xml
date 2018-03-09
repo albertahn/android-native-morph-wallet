@@ -38,6 +38,7 @@
         <activity android:name=".Activity.SignupActivity"></activity>
 
         <activity android:name=".Utils.barcode.BarcodeCaptureActivity"></activity>
+        <activity android:name=".Activity.SuccessPayment"></activity>
     </application>
 
 </manifest>
