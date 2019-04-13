@@ -22,10 +22,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.google.firebase.FirebaseApp;
 import com.neman.morph.morphwallet.Activity.InviteActivity;
 import com.neman.morph.morphwallet.Activity.RecieveGasActivity;
 import com.neman.morph.morphwallet.Activity.TransactionActivity;
 import com.neman.morph.morphwallet.Adapter.StringRecyclerAdapter;
+import com.neman.morph.morphwallet.Utils.firebase_utils.BodyFirebaseManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,7 +41,7 @@ public class MainActivity extends AppCompatActivity
     public ArrayList<String> publicArray;
     public ArrayList<String> friendsArray;
     public ArrayList<String> privateArray;
-
+    BodyFirebaseManager firebaseManager;
 
 
     @Override
@@ -96,12 +98,19 @@ public class MainActivity extends AppCompatActivity
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
+        //drawer.setBackgroundResource(R.color.colorPrimary);
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         Menu menu = navigationView.getMenu();
         menu.findItem(R.id.nav_feed).setChecked(true);
         navigationView.setNavigationItemSelectedListener(this);
         initializeDisplayContent();
+
+        //firebase
+        FirebaseApp.initializeApp(this);
+        // firebaseManager = new BodyFirebaseManager(getBaseContext());
+
+
 
     }
 
@@ -111,6 +120,8 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         Menu menu = navigationView.getMenu();
         menu.findItem(R.id.nav_feed).setChecked(true);
+       /* firebaseManager = new BodyFirebaseManager(getBaseContext());
+        firebaseManager.updateTransaction();*/
     }
 
     private void initializeDisplayContent() {

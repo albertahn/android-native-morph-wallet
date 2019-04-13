@@ -18,9 +18,11 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.FirebaseApp;
 import com.neman.morph.morphwallet.MainActivity;
 import com.neman.morph.morphwallet.R;
 import com.neman.morph.morphwallet.Utils.barcode.BarcodeCaptureActivity;
+import com.neman.morph.morphwallet.Utils.firebase_utils.BodyFirebaseManager;
 
 public class TransactionActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -43,9 +45,12 @@ public class TransactionActivity extends AppCompatActivity
             @Override
             public void onClick(View view) {
 
+                BodyFirebaseManager firebaseManager = new BodyFirebaseManager(getApplicationContext());
+                firebaseManager.updateTransaction();
+
+
                 Intent intent = new Intent(getApplicationContext(), SuccessPayment.class);
                 startActivityForResult(intent, 1);
-
 
             }
         });
@@ -81,19 +86,14 @@ public class TransactionActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
         //initializeDisplayContent();
         navigationView.setNavigationItemSelectedListener(this);
+        FirebaseApp.initializeApp(getBaseContext());
     }//oncreate
 
     @Override
    public void onActivityResult(int requestCode,int resultCode, Intent data) {
         if (requestCode == 1) {
                 addressToSend.setText("AZgXhB49EKyS31nHQmhdqRfGSFQAN5ZXBV");
-
-
-
-
-
                 Toast.makeText(getApplicationContext(), "got address", Toast.LENGTH_SHORT).show();
-
 
         } else{
             super.onActivityResult(requestCode, resultCode, data);
