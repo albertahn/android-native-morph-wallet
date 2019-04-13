@@ -27,19 +27,19 @@
                 android:id="@+id/public_tab"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Public" />
+                android:text="Transactions" />
 
             <android.support.design.widget.TabItem
                 android:id="@+id/friends_tab"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Friends" />
+                android:text="Address Book" />
 
             <android.support.design.widget.TabItem
                 android:id="@+id/private_tab"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Private" />
+                android:text="Secret Transactions" />
         </android.support.design.widget.TabLayout>
 
     </android.support.design.widget.AppBarLayout>

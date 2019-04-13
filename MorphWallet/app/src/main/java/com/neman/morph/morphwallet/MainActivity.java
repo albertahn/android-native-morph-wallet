@@ -11,6 +11,7 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -56,11 +57,7 @@ public class MainActivity extends AppCompatActivity
             ActivityCompat.requestPermissions(activity, PERMISSIONS_REQUEST, 200);
 
         }
-
-
-
-        //this.setSupportActionBar(toolbar);
-//send gad button
+        //send gas button
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -126,10 +123,10 @@ public class MainActivity extends AppCompatActivity
 
         recyclerAdapter = null;
 
-        publicArray= getFeedFrom("Public");
+        publicArray = getFeedFrom("Transactions");
 
-        friendsArray = getFeedFrom("Friends");
-        privateArray = getFeedFrom("Private");
+        friendsArray = getFeedFrom("Address Book");
+        privateArray = getFeedFrom("Secret Transactions");
 
         recyclerAdapter = new StringRecyclerAdapter(this, getFeedFrom("Public"));
         recycler.setAdapter(recyclerAdapter);
@@ -151,20 +148,22 @@ public class MainActivity extends AppCompatActivity
         ArrayList<String> resData = new ArrayList<String>();
 
 
+        Log.d("typeman: ", ""+type);
+
         switch (type){
 
-            case "Public":
+            case "Transactions":
 
                 resData =  publicArray;
 
                 break;
 
-            case "Friends":
+            case "Address Book":
 
                 resData =  friendsArray;
                 break;
 
-            case "Private":
+            case "Secret Transactions":
                 resData =  privateArray;
 
                 break;
@@ -173,7 +172,7 @@ public class MainActivity extends AppCompatActivity
         recyclerAdapter = new StringRecyclerAdapter(this, resData);
         recycler.setAdapter(recyclerAdapter);
         //recyclerAdapter.updateData(getFeedFrom(type));
-
+        initializeDisplayContent();
 
 
     }
@@ -184,20 +183,28 @@ public class MainActivity extends AppCompatActivity
     private ArrayList<String> getFeedFrom(String type) {
         ArrayList<String> list = new ArrayList<>();
         // TODO: further implement this method to pull actual user data
-
-
-        if (type == "Public") {
-            list.add("Bill send Bob 0.3 Gas"); list.add("Harry sent Tom 0.01 Gas");  list.add("Jimmy sent Tommy 0.001 Gas");
+        list.add("transaction **99fg  success ");
+        list.add("transaction **dfgg success ");
+        list.add("transaction **sffg success ");
+/*
+        if (type == "Transactions") {
+            list.add("Successful transaction to public key ending with 99fg");
+            list.add("Successful transaction to public key ending with dfgg");
+            list.add("Successful transaction to public key ending with sffg");
             return list;
         }
-        else if (type == "Friends") {
-            list.add("Joe sent Vio 0.02 Gas"); list.add("Kim sent John 0.004 Gas");
+        else if (type == "Address Book") {
+            list.add("Successful transaction to public key ending with 99fg");
+            list.add("Successful transaction to public key ending with dfgg");
+            list.add("Successful transaction to public key ending with sffg");
             return list;
         }
-        else if (type == "Private") {
-            list.add("Mom sent you 0.02 Gas"); list.add("Dad sent you 0.7 Gas");
+        else if (type == "Secret Transactions") {
+            list.add("Successful transaction to public key ending with 99fg");
+            list.add("Successful transaction to public key ending with dfgg");
+            list.add("Successful transaction to public key ending with sffg");
             return list;
-        }
+        }*/
 
         //TODO
         return list;

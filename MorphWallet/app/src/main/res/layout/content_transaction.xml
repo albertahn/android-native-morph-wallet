@@ -32,7 +32,7 @@
 
         android:ems="10"
         android:inputType="textPersonName"
-        android:hint="Add neo address to send gas"
+        android:hint="Add address to send payment"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
