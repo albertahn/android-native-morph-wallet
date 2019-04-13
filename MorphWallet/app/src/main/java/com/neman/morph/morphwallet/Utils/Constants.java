@@ -19,7 +19,7 @@ public class Constants {
 
     private static String DB_NAME ="morphwallet";
     private static String COLLECTION_NAME = "user";
-    public static  String API_KEY = "bou-l_cGZ9RwxDWNjFm-3E5EhXCpe2IK";
+    public static  String API_KEY = "6D0eWBFJOgEvStu_kwLQQ0a70k2-OBFL";
 
     public static String getAddressSingle(User user){
         String baseUrl = String.format("https://api.mlab.com/api/1/databases/%s/collections/%s",DB_NAME,COLLECTION_NAME);

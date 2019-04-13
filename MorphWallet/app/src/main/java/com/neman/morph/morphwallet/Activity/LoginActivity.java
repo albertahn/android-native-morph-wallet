@@ -5,10 +5,13 @@ package com.neman.morph.morphwallet.Activity;
  * and roccooooo
  */
 
+import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.pm.PackageManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
@@ -50,6 +53,17 @@ public class LoginActivity extends AppCompatActivity {
 
 
 
+        String[] PERMISSIONS_REQUEST = {android.Manifest.permission.READ_EXTERNAL_STORAGE, android.Manifest.permission.CAMERA, android.Manifest.permission.WRITE_EXTERNAL_STORAGE};
+
+        // Request permission to open the camera and read the ROC.lic file
+        Activity activity = (Activity) this;
+        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED || ActivityCompat.checkSelfPermission(activity, android.Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(activity, PERMISSIONS_REQUEST, 200);
+
+        }
+
+
+
         _emailText = (EditText) findViewById(R.id.input_email);
         _passwordText = (EditText) findViewById(R.id.input_password);
 
@@ -60,7 +74,11 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                login();
+                //login();
+
+                //just login user
+
+                startActivity(new Intent(getApplicationContext(), MainActivity.class));
             }
         });
 
@@ -72,11 +90,15 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 Snackbar.make(v, "creating new acct", Snackbar.LENGTH_LONG).show();
+
+
                 /* TODO
                 // Start the Signup activity
                 Intent intent = new Intent(getApplicationContext(), SignupActivity.class);
                 startActivityForResult(intent, REQUEST_SIGNUP);
                 */
+
+
             }
         });
     }
@@ -199,6 +221,9 @@ public class LoginActivity extends AppCompatActivity {
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
             // Done process
+
+            Log.e("s:gson: ", s);
+
             Gson gson = new Gson();
 
             // TODO left off at 33:33 from tutorial.. but getting protected error
