@@ -18,7 +18,6 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.common.api.CommonStatusCodes;
 import com.neman.morph.morphwallet.MainActivity;
 import com.neman.morph.morphwallet.R;
 import com.neman.morph.morphwallet.Utils.barcode.BarcodeCaptureActivity;
@@ -36,7 +35,7 @@ public class TransactionActivity extends AppCompatActivity
         addressToSend = (TextView) findViewById(R.id.address);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        //setSupportActionBar(toolbar);
 
         ImageButton sendPayment = findViewById(R.id.send_button);
 
@@ -87,7 +86,6 @@ public class TransactionActivity extends AppCompatActivity
     @Override
    public void onActivityResult(int requestCode,int resultCode, Intent data) {
         if (requestCode == 1) {
-            if (resultCode == CommonStatusCodes.SUCCESS) {
                 addressToSend.setText("AZgXhB49EKyS31nHQmhdqRfGSFQAN5ZXBV");
 
 
@@ -95,9 +93,7 @@ public class TransactionActivity extends AppCompatActivity
 
 
                 Toast.makeText(getApplicationContext(), "got address", Toast.LENGTH_SHORT).show();
-            } else{
 
-            }
 
         } else{
             super.onActivityResult(requestCode, resultCode, data);
