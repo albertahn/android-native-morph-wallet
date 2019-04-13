@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity
 
 
 
-        this.setSupportActionBar(toolbar);
+//        this.setSupportActionBar(toolbar);
 //send gad button
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
