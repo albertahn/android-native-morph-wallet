@@ -41,7 +41,7 @@
     <EditText
         android:id="@+id/amount"
         android:layout_below="@+id/address"
-        android:hint="How much gas would you like to send"
+        android:hint="How much would you like to send"
         android:layout_centerHorizontal="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
